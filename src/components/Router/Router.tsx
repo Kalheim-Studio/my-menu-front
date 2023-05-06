@@ -13,7 +13,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import Profile from "../Profile/Profile";
 import MenuAdmin from "../MenuAdmin/MenuAdmin";
 import SubAccounts from "../SubAccounts/SubAccounts";
-import QrCode from "../QrCode/QrCode";
+import QrCode from "../QrCode/QrCode"
 
 const Router = () => {
     return (
