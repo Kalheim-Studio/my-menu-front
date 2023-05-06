@@ -1,7 +1,7 @@
 const ValidateAccount = () => {
     return (
         <div>
-            <p>ValdiateAccount</p>
+            <p>ValidateAccount</p>
         </div>
     );
 };

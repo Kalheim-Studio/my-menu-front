@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "test:all": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "test:all": "vitest --coverage --ui"
   },
   "dependencies": {
     "react": "^18.2.0",
