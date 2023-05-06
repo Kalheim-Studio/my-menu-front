@@ -1,6 +1,6 @@
 name: GitHub Ci-CD Test Project
 run-name: ${{ github.actor }} has create a pull request for branch ${{ github.ref }}.
-on: [push]
+on: [pull_request]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
