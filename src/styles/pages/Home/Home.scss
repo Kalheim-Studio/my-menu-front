@@ -35,13 +35,11 @@
   }
   .card-right {
     flex: 5.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: $second-color;
   }
-}
-
-.home-card-test {
-  text-align: center;
-  background-color: $light-grey;
 }
 
 /***********************************************************************************************************/

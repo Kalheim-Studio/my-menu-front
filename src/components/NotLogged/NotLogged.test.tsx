@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import NotLogged from "./NotLogged";
+import { NotLogged } from "./NotLogged";
 
 describe("NotLogged component test", () => {
     it("Component should rendering", () => {

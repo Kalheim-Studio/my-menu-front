@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Login from "./Login";
+import { Login } from "./Login";
 
 describe("App component test", () => {
     it("Component should rendering", () => {

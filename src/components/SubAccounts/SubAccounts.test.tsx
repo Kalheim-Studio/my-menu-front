@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SubAccounts from "./SubAccounts";
+import { SubAccounts } from "./SubAccounts";
 
 describe("SubAccount component test", () => {
     it("Component should rendering", () => {

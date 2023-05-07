@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MenuAdmin from "./MenuAdmin";
+import { MenuAdmin } from "./MenuAdmin";
 
 describe("MenuAdmin component test", () => {
     it("Component should rendering", () => {

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import logo from "../../assets/pictures/logo_big.png";
+import { logoBig } from "../../assets";
 
 const Home = () => {
     return (
@@ -8,7 +8,7 @@ const Home = () => {
                 <div className="card-left">
                     <div className="card-left-header">
                         <div className="home-logo-container">
-                            <img alt="logo my menu" src={logo} />
+                            <img alt="logo my menu" src={logoBig} />
                         </div>
                     </div>
                 </div>
@@ -20,4 +20,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export { Home };

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Home from "./Home";
+import { Home } from "./Home";
 
 describe("Home page component test", () => {
     it("Component should rendering", () => {

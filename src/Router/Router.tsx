@@ -1,19 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 // Pages
-import Home from "../../pages/Home/Home";
-import Admin from "../../pages/Admin/Admin";
-import Menu from "../../pages/Menu/Menu";
-import Order from "../../pages/Order/Order";
+import { Admin, Home, Menu, Order } from "../pages";
 // Components
-import Login from "../Login/Login";
-import Register from "../Register/Register";
-import ValidateAccount from "../ValidateAccount/ValidateAccount";
-import NotLogged from "../NotLogged/NotLogged";
-import PageNotFound from "../PageNotFound/PageNotFound";
-import Profile from "../Profile/Profile";
-import MenuAdmin from "../MenuAdmin/MenuAdmin";
-import SubAccounts from "../SubAccounts/SubAccounts";
-import QrCode from "../QrCode/QrCode";
+import {
+    Login,
+    MenuAdmin,
+    Register,
+    ValidateAccount,
+    NotLogged,
+    PageNotFound,
+    Profile,
+    SubAccounts,
+    QrCode,
+} from "../components";
 
 const Router = () => {
     return (
@@ -41,4 +40,4 @@ const Router = () => {
     );
 };
 
-export default Router;
+export { Router };

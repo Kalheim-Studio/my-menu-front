@@ -6,4 +6,4 @@ const SubAccounts = () => {
     );
 };
 
-export default SubAccounts;
+export { SubAccounts };

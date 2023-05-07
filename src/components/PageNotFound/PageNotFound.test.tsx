@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PageNotFound from "./PageNotFound";
+import { PageNotFound } from "./PageNotFound";
 
 describe("App component test", () => {
     it("Component should rendering", () => {
