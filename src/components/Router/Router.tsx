@@ -17,7 +17,7 @@ import QrCode from "../QrCode/QrCode";
 
 const Router = () => {
     return (
-        <div>
+        <>
             <Routes>
                 <Route path="/" element={<Home />}>
                     <Route path="/login" element={<Login />} />
@@ -37,7 +37,7 @@ const Router = () => {
                 </Route>
                 <Route path="/order" element={<Order />} />
             </Routes>
-        </div>
+        </>
     );
 };
 

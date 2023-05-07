@@ -1,0 +1,56 @@
+#homePage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../assets/pictures/background_home.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .home-card {
+    height: 70%;
+    width: 67.4%;
+    display: flex;
+    background-color: #cecece;
+  }
+
+  .card-left {
+    flex: 4.2;
+    .card-left-header {
+      height: 5.9vw;
+      display: flex;
+      align-items: flex-end;
+      background-color: #373737;
+      .home-logo-container {
+        height: 0%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        img {
+          height: 18.78vw;
+        }
+      }
+    }
+  }
+  .card-right {
+    flex: 5.8;
+    background-color: #e16a00;
+  }
+}
+
+.home-card-test {
+  text-align: center;
+  background-color: #cecece;
+}
+
+/***********************************************************************************************************/
+// Responsive
+
+@media (max-width: 1367px) {
+  #homePage {
+    .home-card {
+      width: 85%;
+    }
+  }
+}

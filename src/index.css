@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   --title-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --title-letter-spacing: 7px;
   --strong-grey: #373737;
