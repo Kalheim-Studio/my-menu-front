@@ -8,7 +8,7 @@ const Home = () => {
                 <div className="card-left">
                     <div className="card-left-header">
                         <div className="home-logo-container">
-                            <img src={logo} />
+                            <img alt="logo my menu" src={logo} />
                         </div>
                     </div>
                 </div>

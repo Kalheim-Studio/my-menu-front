@@ -5,6 +5,6 @@ describe("Home page component test", () => {
     it("Component should rendering", () => {
         render(<Home />);
 
-        expect(screen.getByText("Portail d'accès")).toBeDefined();
+        expect(screen.getByAltText("logo my menu")).toBeDefined();
     });
 });
