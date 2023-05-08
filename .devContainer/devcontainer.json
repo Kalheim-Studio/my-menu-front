@@ -1,4 +1,4 @@
 {
-  "name": "My-Menu-back",
+  "name": "My-Menu-front",
   "dockerFile": "./Dockerfile"
 }
