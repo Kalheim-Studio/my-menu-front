@@ -1,7 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { logoBig } from "../../assets";
 
 const Home = () => {
+    // react-router-dom navigation hook
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // If home page redirect to login
+    useEffect(() => {
+        if (location.pathname === "/") navigate("/login");
+    }, [location.pathname, navigate]);
+
     return (
         <div id="homePage">
             <div className="home-card">
