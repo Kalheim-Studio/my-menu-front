@@ -1,9 +1,11 @@
-import Router from "./components/Router/Router";
-
-import "./App.css";
+import { Router } from "./Router";
 
 function App() {
-    return <Router />;
+    return (
+        <div className="App">
+            <Router />
+        </div>
+    );
 }
 
 export default App;

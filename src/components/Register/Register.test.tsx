@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Register from "./Register";
+import { Register } from "./Register";
 
 describe("Register component test", () => {
     it("Component should rendering", () => {

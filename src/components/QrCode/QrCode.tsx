@@ -6,4 +6,4 @@ const QrCode = () => {
     );
 };
 
-export default QrCode;
+export { QrCode };

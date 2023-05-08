@@ -1,10 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import Home from "./Home";
+import { BrowserRouter } from "react-router-dom";
+import { Home } from "./Home";
 
 describe("Home page component test", () => {
     it("Component should rendering", () => {
-        render(<Home />);
+        render(
+            <BrowserRouter>
+                <Home />
+            </BrowserRouter>
+        );
 
-        expect(screen.getByText("Portail d'accès")).toBeDefined();
+        expect(screen.getByAltText("logo my menu")).toBeDefined();
     });
 });

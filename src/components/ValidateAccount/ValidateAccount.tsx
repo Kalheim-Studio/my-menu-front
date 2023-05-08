@@ -6,4 +6,4 @@ const ValidateAccount = () => {
     );
 };
 
-export default ValidateAccount;
+export { ValidateAccount };

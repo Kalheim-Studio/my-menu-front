@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import Menu from "./Menu";
 import { useParams } from "react-router-dom";
 import { Mock } from "vitest";
+import { Menu } from "./Menu";
 
 vi.mock("react-router-dom", () => ({
     useParams: vi.fn(),

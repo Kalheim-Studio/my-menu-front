@@ -6,4 +6,4 @@ const MenuAdmin = () => {
     );
 };
 
-export default MenuAdmin;
+export { MenuAdmin };

@@ -9,4 +9,4 @@ const NotLogged = () => {
     );
 };
 
-export default NotLogged;
+export { NotLogged };

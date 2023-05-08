@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ValidateAccount from "./ValidateAccount";
+import { ValidateAccount } from "./ValidateAccount";
 
 describe("ValidateAccount component test", () => {
     it("Component should rendering", () => {
