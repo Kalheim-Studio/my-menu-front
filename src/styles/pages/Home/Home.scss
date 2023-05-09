@@ -40,6 +40,35 @@
     justify-content: center;
     background-color: $second-color;
   }
+
+  button,
+  input[type="submit"] {
+    border: 3px solid $dark-grey;
+    background: none;
+    padding: 0em 1em;
+    border-radius: 25px;
+    font-family: $title_font;
+    color: $dark-grey;
+    font-size: 1.15em;
+    letter-spacing: 4px;
+  }
+
+  label {
+    margin-bottom: 1%;
+  }
+
+  input[type="text"] {
+    border: none;
+    height: 6%;
+  }
+  input[type="radio"] {
+    height: 20px;
+    width: 20px;
+    accent-color: $dark-grey;
+  }
+  a {
+    color: $dark-grey;
+  }
 }
 
 /***********************************************************************************************************/

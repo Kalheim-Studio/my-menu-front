@@ -5,21 +5,21 @@ const useAuthenticated = () => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
 
-    const token = "this is a token";
+    useEffect(() => {
+        const token = undefined;
 
-    const headers: HeadersInit = {
-        Authorization: `Bearer ${token}`,
-    };
-
-    fetch("http://localhost:8080/user/check-authenticated", {
-        headers: headers,
-    }).then((res) => {
-        console.log(res.status);
-        if (res.status === 200 && pathname === "/login") navigate("/admin/menu");
-        else if (res.status !== 200 && pathname !== "/login") navigate("/home/not-logged");
-    });
-
-    return true;
+        const headers: HeadersInit = {
+            Authorization: `Bearer ${token}`,
+        };
+        if (token)
+            fetch("http://localhost:8080/user/check-authenticated", {
+                headers: headers,
+            }).then((res) => {
+                console.log(res.status);
+                if (res.status === 200 && pathname === "/login") navigate("/admin/menu");
+                else if (res.status !== 200 && pathname !== "/login") navigate("/home/not-logged");
+            });
+    }, []);
 };
 
 export { useAuthenticated };
