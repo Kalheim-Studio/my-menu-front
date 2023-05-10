@@ -41,8 +41,7 @@
     background-color: $second-color;
   }
 
-  button,
-  input[type="submit"] {
+  button {
     border: 3px solid $dark-grey;
     background: none;
     padding: 0em 1em;
@@ -51,6 +50,13 @@
     color: $dark-grey;
     font-size: 1.15em;
     letter-spacing: 4px;
+    transition: color 250ms, border-color 250ms;
+  }
+
+  button:hover {
+    color: green;
+    border-color: green;
+    transition: color 250ms, border-color 250ms;
   }
 
   h2 {
@@ -60,14 +66,13 @@
   }
 
   label {
-    margin: 1% 0;
     padding-right: 0.5em;
   }
 
-  input[type="text"] {
+  .form-input {
     border: none;
-    height: 6%;
-    width: 20em;
+    height: 2.25em;
+    width: 25em;
     margin: 1em 0;
   }
   input[type="radio"] {
@@ -78,6 +83,13 @@
 
   a {
     color: $dark-grey;
+    text-decoration: none;
+    transition: color 250ms;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: $medium-grey;
+    transition: color 250ms;
   }
 }
 
