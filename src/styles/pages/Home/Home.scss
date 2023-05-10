@@ -42,21 +42,21 @@
   }
 
   button {
+    width: 8em;
     border: 3px solid $dark-grey;
     background: none;
-    padding: 0em 1em;
+    padding: 0em 0.5em;
     border-radius: 25px;
     font-family: $title_font;
+    font-size: 1em;
     color: $dark-grey;
-    font-size: 1.15em;
     letter-spacing: 4px;
-    transition: color 250ms, border-color 250ms;
+    transition: background-color 250ms;
   }
 
   button:hover {
-    color: green;
-    border-color: green;
-    transition: color 250ms, border-color 250ms;
+    background-color: $light-grey;
+    transition: background-color 250ms;
   }
 
   h2 {

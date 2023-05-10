@@ -1,12 +1,16 @@
 import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticated } from "../../hooks";
 
 const Login = () => {
     //  States
     const [isManager, setIsManager] = useState(false);
+    const [isRequesting, setIsRequesting] = useState(false);
+
+    // React-router-dom
+    const navigate = useNavigate();
 
     // Check if authenticated
     useAuthenticated();
@@ -76,8 +80,14 @@ const Login = () => {
                 <div className="form-bottom">
                     <Link to="/register">Pas encore inscrit ?</Link>
                     {/* <input type="submit" value="Entrer" /> */}
-                    <button>
-            Entrer <FontAwesomeIcon icon={faArrowRightToBracket} />
+                    <button disabled={isRequesting}>
+                        {!isRequesting ? (
+                            <>
+                Entrer <FontAwesomeIcon icon={faArrowRightToBracket} />
+                            </>
+                        ) : (
+                            <FontAwesomeIcon icon={faSpinner} spin />
+                        )}
                     </button>
                 </div>
             </form>
@@ -91,24 +101,35 @@ const Login = () => {
 
     function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        setIsRequesting(true);
         const { email, password, userRole, managerId } = e.currentTarget;
-        console.log(email, password);
-        // console.log(email.value, password.value, userRole.value, managerId?.value);
-        fetch(`${import.meta.env.VITE_APIURL}/user/authenticate`, {
+        const body = {
+            email: email.value,
+            password: password.value,
+            stayLogged: true,
+        };
+
+        fetch(`${import.meta.env.VITE_API_URL}/user/authenticate`, {
             method: "POST",
             headers: {
                 accept: "application/json",
                 "Content-type": "application/json",
             },
-            body: JSON.stringify({
-                email: email.value,
-                password: password.value,
-                staylogged: false,
-            }),
+            body: JSON.stringify(body),
         })
-            .then((res) => res.json())
-            .then((json) => console.log(json))
-            .catch((err) => console.log(err));
+            .then(async (res) => {
+                if (res.status != 200) {
+                    const error = await res.text();
+                    throw new Error(error);
+                }
+                return res.json();
+            })
+            .then((json) => {
+                console.log(json);
+                navigate("/admin");
+            })
+            .catch((err) => console.log(err.message))
+            .finally(() => setIsRequesting(false));
     }
 };
 
