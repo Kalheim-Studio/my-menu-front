@@ -67,7 +67,7 @@ const Login = () => {
                     )}
                     <div className="login-form-fragment">
                         <label htmlFor="loginPwdInput">Mot de passe :</label>
-                        <input type="password" id="loginPwdInput" className="form-input" name="email" required />
+                        <input type="password" id="loginPwdInput" className="form-input" name="password" required />
                     </div>
                     <Link className="login-text-small" to="/reset-password">
             Problème de connexion ?
@@ -91,7 +91,24 @@ const Login = () => {
 
     function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        console.log(e.target);
+        const { email, password, userRole, managerId } = e.currentTarget;
+        console.log(email, password);
+        // console.log(email.value, password.value, userRole.value, managerId?.value);
+        fetch(`${import.meta.env.VITE_APIURL}/user/authenticate`, {
+            method: "POST",
+            headers: {
+                accept: "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email.value,
+                password: password.value,
+                staylogged: false,
+            }),
+        })
+            .then((res) => res.json())
+            .then((json) => console.log(json))
+            .catch((err) => console.log(err));
     }
 };
 
