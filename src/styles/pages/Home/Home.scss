@@ -75,7 +75,8 @@
     width: 25em;
     margin: 1em 0;
   }
-  input[type="radio"] {
+  input[type="radio"],
+  input[type="checkbox"] {
     appearance: auto;
     box-sizing: border-box;
     accent-color: $dark-grey;

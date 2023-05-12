@@ -8,6 +8,7 @@ const Login = () => {
     //  States
     const [isManager, setIsManager] = useState(false);
     const [isRequesting, setIsRequesting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     // React-router-dom
     const navigate = useNavigate();
@@ -22,6 +23,9 @@ const Login = () => {
             </div>
             <form onSubmit={onSubmitHandler}>
                 <div className="login-form-inputs">
+                    <div className="login-error-container">
+                        <div className="login-error">{errorMessage}</div>
+                    </div>
                     <div className="login-form-fragment">
                         <label htmlFor="loginMailInput">Email :</label>
                         <input
@@ -58,12 +62,12 @@ const Login = () => {
                     </div>
                     {isManager && (
                         <div className="login-form-fragment">
-                            <label htmlFor="loginManagerIdInput">Identifiant manager :</label>
+                            <label htmlFor="loginIndentifierInput">Identifiant manager :</label>
                             <input
                                 type="text"
-                                id="loginManagerIdInput"
+                                id="loginIndentifierInput"
                                 className="form-input"
-                                name="managerId"
+                                name="indentifier"
                                 required
                                 placeholder="JohnDoe"
                             />
@@ -72,14 +76,20 @@ const Login = () => {
                     <div className="login-form-fragment">
                         <label htmlFor="loginPwdInput">Mot de passe :</label>
                         <input type="password" id="loginPwdInput" className="form-input" name="password" required />
+                        <div>
+                            <input type="checkbox" name="rememberMe" id="rememberMe" value={"check"} />
+                            <label htmlFor="rememberMe" className="login-text-small">
+                Se souvenir de moi
+                            </label>
+                        </div>
                     </div>
+
                     <Link className="login-text-small" to="/reset-password">
             Problème de connexion ?
                     </Link>
                 </div>
                 <div className="form-bottom">
                     <Link to="/register">Pas encore inscrit ?</Link>
-                    {/* <input type="submit" value="Entrer" /> */}
                     <button disabled={isRequesting}>
                         {!isRequesting ? (
                             <>
@@ -102,11 +112,14 @@ const Login = () => {
     function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setIsRequesting(true);
-        const { email, password, userRole, managerId } = e.currentTarget;
+        const { email, password, rememberMe, userRole, indentifier } = e.currentTarget;
+
         const body = {
             email: email.value,
             password: password.value,
-            stayLogged: true,
+            stayLogged: rememberMe.checked,
+            role: userRole.checked,
+            identifier: indentifier?.value,
         };
 
         fetch(`${import.meta.env.VITE_API_URL}/user/authenticate`, {
@@ -128,7 +141,10 @@ const Login = () => {
                 console.log(json);
                 navigate("/admin");
             })
-            .catch((err) => console.log(err.message))
+            .catch((err) => {
+                setErrorMessage("Email, ou mot de passe incorrect, ou compte non authorisé.");
+                console.log(err.message);
+            })
             .finally(() => setIsRequesting(false));
     }
 };
