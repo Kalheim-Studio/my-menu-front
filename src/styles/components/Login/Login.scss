@@ -50,6 +50,13 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 1.25em;
+        .input-pwd-box {
+          display: flex;
+          align-items: center;
+          .show-pwd-icon {
+            background-color: white;
+          }
+        }
       }
       .login-text-small {
         font-size: 0.9em;

@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightToBracket, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket, faSpinner, faEye } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticated } from "../../hooks";
 
 const Login = () => {
@@ -75,7 +75,12 @@ const Login = () => {
                     )}
                     <div className="login-form-fragment">
                         <label htmlFor="loginPwdInput">Mot de passe :</label>
-                        <input type="password" id="loginPwdInput" className="form-input" name="password" required />
+                        <div className="input-pwd-box">
+                            <input type="password" id="loginPwdInput" className="form-input" name="password" required />
+                            <span className="show-hide-icon">
+                                <FontAwesomeIcon icon={faEye} className="show-pwd-icon form-input" />
+                            </span>
+                        </div>
                         <div>
                             <input type="checkbox" name="rememberMe" id="rememberMe" value={"check"} />
                             <label htmlFor="rememberMe" className="login-text-small">
@@ -104,6 +109,7 @@ const Login = () => {
         </div>
     );
 
+    // Handlers
     function radioChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.value === "manager") setIsManager(true);
         else setIsManager(false);
@@ -139,13 +145,19 @@ const Login = () => {
             })
             .then((json) => {
                 console.log(json);
-                navigate("/admin");
+
+                grantAccess();
             })
             .catch((err) => {
                 setErrorMessage("Email, ou mot de passe incorrect, ou compte non authorisé.");
                 console.log(err.message);
             })
             .finally(() => setIsRequesting(false));
+    }
+
+    // Methods
+    function grantAccess() {
+    // navigate("/admin");
     }
 };
 

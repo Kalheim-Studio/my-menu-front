@@ -42,13 +42,13 @@
   }
 
   button {
-    width: 8em;
+    width: 8rem;
     border: 3px solid $dark-grey;
     background: none;
-    padding: 0em 0.5em;
+    padding: 0rem 0.5rem;
     border-radius: 25px;
     font-family: $title_font;
-    font-size: 1em;
+    font-size: 1rem;
     color: $dark-grey;
     letter-spacing: 4px;
     transition: background-color 250ms;
@@ -60,20 +60,23 @@
   }
 
   h2 {
-    font-size: 2.25em;
+    font-size: 2.25rem;
     font-family: $title_font;
     letter-spacing: 6px;
   }
 
   label {
-    padding-right: 0.5em;
+    padding-right: 0.5rem;
+  }
+
+  input.form-input {
+    width: 22rem;
+    margin: 1rem 0;
+    border: none;
   }
 
   .form-input {
-    border: none;
-    height: 2.25em;
-    width: 25em;
-    margin: 1em 0;
+    height: 2.25rem;
   }
   input[type="radio"],
   input[type="checkbox"] {
