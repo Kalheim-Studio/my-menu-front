@@ -55,7 +55,7 @@
   }
 
   button:hover {
-    background-color: $light-grey;
+    background-color: $hightlight-light-color;
     transition: background-color 250ms;
   }
 
@@ -71,7 +71,8 @@
 
   input.form-input {
     width: 22rem;
-    margin: 1rem 0;
+    margin: 0.75em 0;
+    padding-left: 0.5rem;
     border: none;
   }
 
@@ -92,7 +93,7 @@
   }
   a:hover {
     text-decoration: underline;
-    color: $medium-grey;
+    color: $hightlight-light-color;
     transition: color 250ms;
   }
 }

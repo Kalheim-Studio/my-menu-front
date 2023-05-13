@@ -1,20 +1,35 @@
-import { FormEvent, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightToBracket, faSpinner, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket, faSpinner, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticated } from "../../hooks";
 
 const Login = () => {
     //  States
     const [isManager, setIsManager] = useState(false);
     const [isRequesting, setIsRequesting] = useState(false);
+    const [showPwd, setShowPwd] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    // Refs
+    const pwdRef = useRef<HTMLInputElement>(null);
 
     // React-router-dom
     const navigate = useNavigate();
 
     // Check if authenticated
     useAuthenticated();
+
+    // useEffect
+    useEffect(() => {
+    // Focus on password input with cursor at the end
+        const root = pwdRef.current;
+        if (root) {
+            root.focus();
+            root.selectionStart = root.value.length;
+            root.selectionEnd = root.value.length;
+        }
+    }, [showPwd]);
 
     return (
         <div className="login-container">
@@ -76,9 +91,20 @@ const Login = () => {
                     <div className="login-form-fragment">
                         <label htmlFor="loginPwdInput">Mot de passe :</label>
                         <div className="input-pwd-box">
-                            <input type="password" id="loginPwdInput" className="form-input" name="password" required />
-                            <span className="show-hide-icon">
-                                <FontAwesomeIcon icon={faEye} className="show-pwd-icon form-input" />
+                            <input
+                                type={showPwd ? "text" : "password"}
+                                id="loginPwdInput"
+                                className="form-input"
+                                name="password"
+                                required
+                                ref={pwdRef}
+                            />
+                            <span className="show-pwd-icon">
+                                <FontAwesomeIcon
+                                    icon={showPwd ? faEyeSlash : faEye}
+                                    className="show-pwd-icon form-input"
+                                    onClick={() => setShowPwd(!showPwd)}
+                                />
                             </span>
                         </div>
                         <div>
@@ -115,7 +141,7 @@ const Login = () => {
         else setIsManager(false);
     }
 
-    function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
+    function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setIsRequesting(true);
         const { email, password, rememberMe, userRole, indentifier } = e.currentTarget;
@@ -157,7 +183,7 @@ const Login = () => {
 
     // Methods
     function grantAccess() {
-    // navigate("/admin");
+        navigate("/admin");
     }
 };
 
