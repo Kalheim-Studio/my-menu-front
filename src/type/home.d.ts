@@ -1,0 +1,3 @@
+interface HomePageComponentProps {
+  title: string;
+}

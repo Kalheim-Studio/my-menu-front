@@ -77,3 +77,36 @@
     }
   }
 }
+
+@media (max-width: $medium_screen) {
+  .login-container {
+    form {
+      .login-form-inputs {
+        .login-error-container {
+          left: -80%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $little_screen) {
+  .login-container {
+    .login-header {
+      justify-content: flex-end;
+      color: $light-grey;
+      height: 0;
+      position: relative;
+      top: -1em;
+    }
+    form {
+      .login-form-inputs {
+        .login-error-container {
+          left: -13rem;
+          top: -18rem;
+          width: 30rem;
+        }
+      }
+    }
+  }
+}

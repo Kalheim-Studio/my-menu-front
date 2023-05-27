@@ -1,7 +1,14 @@
+/* FONT */
 $title-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 $title-letter-spacing: 7px;
+
+/* COLORS */
 $dark-grey: #373737;
 $medium-grey: #707070;
 $light-grey: #cecece;
 $hightlight-light-color: white;
 $second-color: #e16a00;
+
+/* MEDIA QUERIES */
+$medium_screen: 1366px;
+$little_screen: 800px;
