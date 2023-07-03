@@ -1,18 +1,13 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const useAuthenticated = () => {
+function useAuthenticated () {
     const { pathname } = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = undefined;
-        // const token = "this a token";
-        //     const token =
-        //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." +
-        //   "eyJyZXN0YXVyYW50SWQiOiI2NDQzODY0Yzk5MmJiNTViYmU0ODdlZmEiLCJpYXQiOjE2ODM3MTc2ODF9." +
-        //   "dEK3XIgTD5HE6A086V28xxw4wDAQ757lsVw-hvm5w-4";
-
+        const token =  localStorage.getItem("auth") || sessionStorage.getItem("auth");
+        
         if (token) {
             // Request headers
             const headers: HeadersInit = {
@@ -25,7 +20,6 @@ const useAuthenticated = () => {
             })
                 .then((res) => {
                     if (res.status === 200) {
-                        console.log(res);
                         return res.json();
                     } else throw new Error("not connected");
                 })
@@ -45,6 +39,6 @@ const useAuthenticated = () => {
                 });
         }
     }, [navigate, pathname]);
-};
+}
 
 export { useAuthenticated };

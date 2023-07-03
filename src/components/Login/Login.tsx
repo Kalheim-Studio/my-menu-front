@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faSpinner, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticated } from "../../hooks";
+import { authenticate } from "../../services/authenticate/authenticate";
+import { LoginFormData } from "../../types/Login";
 
 const Login = () => {
     //  States
@@ -36,7 +38,7 @@ const Login = () => {
             <div className="login-header">
                 <h2>Accès Restaurateur</h2>
             </div>
-            <form onSubmit={onSubmitHandler}>
+            <form onSubmit={onSubmitHandler} >
                 <div className="login-form-inputs">
                     <div className="login-error-container">
                         <div className="login-error">{errorMessage}</div>
@@ -50,14 +52,17 @@ const Login = () => {
                             name="email"
                             required
                             placeholder="john.doe@mail.com"
+                            autoComplete="email"
+                            disabled={isRequesting}
                         />
                         <div>
                             <input
                                 type="radio"
                                 id="ownerRadioInput"
-                                name="userRole"
+                                name="role"
                                 value="owner"
                                 defaultChecked
+                                disabled={isRequesting}
                                 onChange={radioChangeHandler}
                             />
                             <label htmlFor="ownerRadioInput" className="login-text-small">
@@ -66,8 +71,9 @@ const Login = () => {
                             <input
                                 type="radio"
                                 id="managerRadioInput"
-                                name="userRole"
+                                name="role"
                                 value="manager"
+                                disabled={isRequesting}
                                 onChange={radioChangeHandler}
                             />
                             <label htmlFor="managerRadioInput" className="login-text-small">
@@ -83,6 +89,7 @@ const Login = () => {
                                 id="loginIndentifierInput"
                                 className="form-input"
                                 name="indentifier"
+                                disabled={isRequesting}
                                 required
                                 placeholder="JohnDoe"
                             />
@@ -92,12 +99,15 @@ const Login = () => {
                         <label htmlFor="loginPwdInput">Mot de passe :</label>
                         <div className="input-pwd-box">
                             <input
+                                ref={pwdRef}
+                                required
                                 type={showPwd ? "text" : "password"}
                                 id="loginPwdInput"
                                 className="form-input"
                                 name="password"
-                                required
-                                ref={pwdRef}
+                                disabled={isRequesting}
+                                placeholder="Saisissez votre mot de passe"
+                                autoComplete="off"
                             />
                             <span className="show-pwd-icon">
                                 <FontAwesomeIcon
@@ -108,8 +118,14 @@ const Login = () => {
                             </span>
                         </div>
                         <div>
-                            <input type="checkbox" name="rememberMe" id="rememberMe" value={"check"} />
-                            <label htmlFor="rememberMe" className="login-text-small">
+                            <input 
+                                type="checkbox"
+                                name="stayLogged"
+                                id="stayLogged"
+                                value={"true"}
+                                disabled={isRequesting}
+                            />
+                            <label htmlFor="stayLogged" className="login-text-small">
                 Se souvenir de moi
                             </label>
                         </div>
@@ -143,46 +159,35 @@ const Login = () => {
 
     function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+
         setIsRequesting(true);
-        const { email, password, rememberMe, userRole, indentifier } = e.currentTarget;
 
-        const body = {
-            email: email.value,
-            password: password.value,
-            stayLogged: rememberMe.checked,
-            role: userRole.checked,
-            identifier: indentifier?.value,
-        };
-
-        fetch(`${import.meta.env.VITE_API_URL}/user/authenticate`, {
-            method: "POST",
-            headers: {
-                accept: "application/json",
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(body),
-        })
-            .then(async (res) => {
-                if (res.status != 200) {
-                    const error = await res.text();
-                    throw new Error(error);
-                }
-                return res.json();
-            })
-            .then((json) => {
-                console.log(json);
-
-                grantAccess();
-            })
-            .catch((err) => {
-                setErrorMessage("Email, ou mot de passe incorrect, ou compte non authorisé.");
-                console.log(err.message);
-            })
-            .finally(() => setIsRequesting(false));
+        // Set body content with login form data
+        const body: Partial<LoginFormData> = {};
+        formData.forEach((data, key) =>{
+            if(data){
+                body[key as keyof LoginFormData] = data.toString();
+            }
+        });
+        
+        authenticate(body)
+            .then(response => grantAccess(response.result, response.stayLogged))
+            .catch(err => {
+                setErrorMessage(err.result);
+                setIsRequesting(false);
+            });
     }
 
     // Methods
-    function grantAccess() {
+    function grantAccess(token: string, stayLogged?: string) {
+        
+        if(stayLogged === "true")
+            localStorage.setItem("auth", token);
+        else
+            sessionStorage.setItem("auth", token);
+
         navigate("/admin");
     }
 };
