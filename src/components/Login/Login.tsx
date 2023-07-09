@@ -23,14 +23,9 @@ const Login = () => {
     useAuthenticated();
 
     // useEffect
-    useEffect(() => {
-    // Focus on password input with cursor at the end
-        const root = pwdRef.current;
-        if (root) {
-            root.focus();
-            root.selectionStart = root.value.length;
-            root.selectionEnd = root.value.length;
-        }
+    useEffect(() => {        
+        // Focus on password input with cursor at the end
+        setInputCursorPosition(pwdRef);
     }, [showPwd]);
 
     return (
@@ -113,7 +108,7 @@ const Login = () => {
                                 <FontAwesomeIcon
                                     icon={showPwd ? faEyeSlash : faEye}
                                     className="show-pwd-icon form-input"
-                                    onClick={() => setShowPwd(!showPwd)}
+                                    onClick={showPwdHandler}
                                 />
                             </span>
                         </div>
@@ -180,6 +175,10 @@ const Login = () => {
             });
     }
 
+    function showPwdHandler() {
+        setShowPwd(!showPwd);
+    }
+
     // Methods
     function grantAccess(token: string, stayLogged?: string) {
         
@@ -189,6 +188,17 @@ const Login = () => {
             sessionStorage.setItem("auth", token);
 
         navigate("/admin");
+    }
+
+    function setInputCursorPosition (ref: React.RefObject<HTMLInputElement>) {
+        const root = ref.current;
+
+        if (root) {
+            root.focus();
+            console.log(root.value);
+            root.selectionStart = root.value.length;
+            root.selectionEnd = root.value.length;
+        }
     }
 };
 
