@@ -40,15 +40,111 @@
     justify-content: center;
     background-color: $second-color;
   }
+
+  button {
+    width: 8rem;
+    border: 3px solid $dark-grey;
+    background: none;
+    padding: 0rem 0.5rem;
+    border-radius: 25px;
+    font-family: $title_font;
+    font-size: 1rem;
+    color: $dark-grey;
+    letter-spacing: 4px;
+    transition: background-color 250ms;
+  }
+
+  button:hover {
+    background-color: $hightlight-light-color;
+    transition: background-color 250ms;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    font-family: $title_font;
+    letter-spacing: 6px;
+  }
+
+  label {
+    padding-right: 0.5rem;
+  }
+
+  input.form-input {
+    width: 22rem;
+    margin: 0.75em 0;
+    padding-left: 0.5rem;
+    border: none;
+  }
+
+  .form-input {
+    height: 2.25rem;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    appearance: auto;
+    box-sizing: border-box;
+    accent-color: $dark-grey;
+  }
+
+  a {
+    color: $dark-grey;
+    text-decoration: none;
+    transition: color 250ms;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: $hightlight-light-color;
+    transition: color 250ms;
+  }
 }
 
 /***********************************************************************************************************/
 // Responsive
 
-@media (max-width: 1367px) {
+@media (max-width: $medium_screen) {
   #homePage {
     .home-card {
       width: 85%;
+    }
+  }
+}
+
+@media (max-width: $little_screen) {
+  #homePage {
+    .home-card {
+      flex-direction: column;
+      width: 90vw;
+      .card-left {
+        flex: 1.5;
+        .card-left-header {
+          height: 8rem;
+          align-items: flex-start;
+          .home-logo-container {
+            position: inherit;
+            height: 0;
+            width: 100%;
+            // padding-left: 0.5rem;
+            align-items: flex-start;
+            justify-content: flex-start;
+            img {
+              position: relative;
+              height: 10rem;
+            }
+          }
+        }
+      }
+      .card-right {
+        flex: 8.5;
+      }
+    }
+
+    input.form-input {
+      width: 60vw;
+    }
+
+    h2 {
+      font-size: 1.5rem;
     }
   }
 }

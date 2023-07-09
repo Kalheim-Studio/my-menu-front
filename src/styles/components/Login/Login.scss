@@ -1,0 +1,112 @@
+.login-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $dark-grey;
+
+  .login-header {
+    height: 5.9vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1em;
+  }
+
+  form {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 2em 0 2em;
+
+    label {
+      font-size: 1.2em;
+    }
+
+    .login-form-inputs {
+      flex: 1;
+      margin-left: 1em;
+      padding-top: 2em;
+      .login-error-container {
+        position: relative;
+        height: 0;
+        display: flex;
+        justify-content: flex-end;
+        left: -70%;
+        top: 1.5em;
+        width: 60%;
+        color: red;
+        .login-error {
+          display: flex;
+          max-width: 65%;
+          display: absolute;
+        }
+      }
+      .login-form-fragment {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25em;
+        .input-pwd-box {
+          display: flex;
+          align-items: center;
+          .show-pwd-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1rem;
+            width: 1rem;
+            position: relative;
+            right: 0.65rem;
+            color: $medium-grey;
+          }
+        }
+      }
+      .login-text-small {
+        font-size: 0.9em;
+      }
+    }
+    .form-bottom {
+      padding-bottom: 1.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: $medium_screen) {
+  .login-container {
+    form {
+      .login-form-inputs {
+        .login-error-container {
+          left: -80%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $little_screen) {
+  .login-container {
+    .login-header {
+      justify-content: flex-end;
+      color: $light-grey;
+      height: 0;
+      position: relative;
+      top: -1em;
+    }
+    form {
+      .login-form-inputs {
+        .login-error-container {
+          left: -13rem;
+          top: -18rem;
+          width: 30rem;
+        }
+      }
+    }
+  }
+}
