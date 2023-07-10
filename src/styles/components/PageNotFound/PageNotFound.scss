@@ -1,0 +1,22 @@
+.error-404-container {
+  .error-404-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .error-message {
+    flex: 9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .error-return-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

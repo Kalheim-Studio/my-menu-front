@@ -23,17 +23,17 @@ const Login = () => {
     useAuthenticated();
 
     // useEffect
-    useEffect(() => {        
-        // Focus on password input with cursor at the end
+    useEffect(() => {
+    // Focus on password input with cursor at the end
         setInputCursorPosition(pwdRef);
     }, [showPwd]);
 
     return (
-        <div className="login-container">
-            <div className="login-header">
+        <div className="home-outlet login-container">
+            <div className="home-header">
                 <h2>Accès Restaurateur</h2>
             </div>
-            <form onSubmit={onSubmitHandler} >
+            <form onSubmit={onSubmitHandler} className="home-content">
                 <div className="login-form-inputs">
                     <div className="login-error-container">
                         <div className="login-error">{errorMessage}</div>
@@ -113,13 +113,7 @@ const Login = () => {
                             </span>
                         </div>
                         <div>
-                            <input 
-                                type="checkbox"
-                                name="stayLogged"
-                                id="stayLogged"
-                                value={"true"}
-                                disabled={isRequesting}
-                            />
+                            <input type="checkbox" name="stayLogged" id="stayLogged" value={"true"} disabled={isRequesting} />
                             <label htmlFor="stayLogged" className="login-text-small">
                 Se souvenir de moi
                             </label>
@@ -161,15 +155,15 @@ const Login = () => {
 
         // Set body content with login form data
         const body: Partial<LoginFormData> = {};
-        formData.forEach((data, key) =>{
-            if(data){
+        formData.forEach((data, key) => {
+            if (data) {
                 body[key as keyof LoginFormData] = data.toString();
             }
         });
-        
+
         authenticate(body)
-            .then(response => grantAccess(response.result, response.stayLogged))
-            .catch(err => {
+            .then((response) => grantAccess(response.result, response.stayLogged))
+            .catch((err) => {
                 setErrorMessage(err.result);
                 setIsRequesting(false);
             });
@@ -181,16 +175,13 @@ const Login = () => {
 
     // Methods
     function grantAccess(token: string, stayLogged?: string) {
-        
-        if(stayLogged === "true")
-            localStorage.setItem("auth", token);
-        else
-            sessionStorage.setItem("auth", token);
+        if (stayLogged === "true") localStorage.setItem("auth", token);
+        else sessionStorage.setItem("auth", token);
 
         navigate("/admin");
     }
 
-    function setInputCursorPosition (ref: React.RefObject<HTMLInputElement>) {
+    function setInputCursorPosition(ref: React.RefObject<HTMLInputElement>) {
         const root = ref.current;
 
         if (root) {
