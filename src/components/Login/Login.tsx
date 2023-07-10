@@ -113,7 +113,13 @@ const Login = () => {
                             </span>
                         </div>
                         <div>
-                            <input type="checkbox" name="stayLogged" id="stayLogged" value={"true"} disabled={isRequesting} />
+                            <input
+                                type="checkbox"
+                                name="stayLogged"
+                                id="stayLogged"
+                                value={"true"}
+                                disabled={isRequesting}
+                            />
                             <label htmlFor="stayLogged" className="login-text-small">
                 Se souvenir de moi
                             </label>
