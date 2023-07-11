@@ -113,13 +113,7 @@ const Login = () => {
                             </span>
                         </div>
                         <div>
-                            <input
-                                type="checkbox"
-                                name="stayLogged"
-                                id="stayLogged"
-                                value={"true"}
-                                disabled={isRequesting}
-                            />
+                            <input type="checkbox" name="stayLogged" id="stayLogged" value={"true"} disabled={isRequesting} />
                             <label htmlFor="stayLogged" className="login-text-small">
                 Se souvenir de moi
                             </label>
@@ -184,7 +178,7 @@ const Login = () => {
         if (stayLogged === "true") localStorage.setItem("auth", token);
         else sessionStorage.setItem("auth", token);
 
-        navigate("/admin");
+        navigate("/admin/menu");
     }
 
     function setInputCursorPosition(ref: React.RefObject<HTMLInputElement>) {

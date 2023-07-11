@@ -1,0 +1,44 @@
+#adminPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .admin-left-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    font-family: $title-font;
+    .panel-header {
+      flex: 1.6;
+      background-color: $second-color;
+    }
+    nav {
+      flex: 8.4;
+      background-color: $dark-grey;
+      color: $second-color;
+      .nav-list {
+        padding-top: 3em;
+        padding-left: 2em;
+      }
+    }
+  }
+  .admin-page-container {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/pictures/background_admin.svg");
+    .page-title {
+      flex: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      font-family: $title-font;
+      color: $second-color;
+    }
+    .page-content {
+      flex: 8.4;
+      align-self: center;
+    }
+  }
+}
