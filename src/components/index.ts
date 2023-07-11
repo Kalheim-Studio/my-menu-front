@@ -6,4 +6,5 @@ export * from "./NotLogged/NotLogged";
 export * from "./PageNotFound/PageNotFound";
 export * from "./Profile/Profile";
 export * from "./SubAccounts/SubAccounts";
+export * from "./Tables/Tables";
 export * from "./QrCode/QrCode";

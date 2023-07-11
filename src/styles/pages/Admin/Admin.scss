@@ -2,7 +2,14 @@
   height: 100%;
   width: 100%;
   display: flex;
-
+  .waiting-spinner{
+    height: 100%;
+    width: 100%;
+    display: 	flex;
+    align-items: center;
+    justify-content: center;
+    color: $second-color;
+  }
   .admin-left-panel {
     flex: 2;
     display: flex;
@@ -17,8 +24,19 @@
       background-color: $dark-grey;
       color: $second-color;
       .nav-list {
+        height: 100%;
         padding-top: 3em;
         padding-left: 2em;
+        li{
+          margin-top: 1em;
+          .nav-item{
+            color: $light-grey;
+            text-decoration: none;
+          }
+          .nav-item-active{
+            color: $second-color;
+          }
+        }
       }
     }
   }
@@ -38,7 +56,9 @@
     }
     .page-content {
       flex: 8.4;
+      width: 70%;
       align-self: center;
+      background-color: $light-grey;
     }
   }
 }

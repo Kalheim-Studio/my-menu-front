@@ -11,6 +11,7 @@ import {
     PageNotFound,
     Profile,
     SubAccounts,
+    Tables,
     QrCode,
 } from "../components";
 
@@ -29,6 +30,7 @@ const Router = () => {
                     <Route path="/admin/profile" element={<Profile />} />
                     <Route path="/admin/menu" element={<MenuAdmin />} />
                     <Route path="/admin/sub-accounts" element={<SubAccounts />} />
+                    <Route path="/admin/tables" element={<Tables />} />
                     <Route path="/admin/qr-code" element={<QrCode />} />
                 </Route>
                 <Route path="/menu" element={<Pages.Menu />}>
