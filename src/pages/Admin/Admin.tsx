@@ -44,7 +44,7 @@ const Admin = () => {
                             <div className="header-content">
                                 <img alt="logo-mymenu-small" src={logoSmall} />
                                 <span>
-                                    {adminContextValues.owner.firstname} {adminContextValues.owner.lastname}
+                                    {adminContextValues.user.firstname} {adminContextValues.user.lastname}
                                 </span>
                             </div>
                         </div>
@@ -54,7 +54,10 @@ const Admin = () => {
                                     <li key={"link-" + index}>
                                         <Link
                                             to={"/admin" + navItem.link}
-                                            className={clsx("nav-item", "/admin" + navItem.link === pathname && "nav-item-active")}
+                                            className={clsx(
+                                                "nav-item",
+                                                "/admin" + navItem.link === pathname && "nav-item-active"
+                                            )}
                                         >
                                             {navItem.title}
                                         </Link>

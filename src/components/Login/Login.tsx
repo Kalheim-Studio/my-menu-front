@@ -83,7 +83,7 @@ const Login = () => {
                                 type="text"
                                 id="loginIndentifierInput"
                                 className="form-input"
-                                name="indentifier"
+                                name="identifier"
                                 disabled={isRequesting}
                                 required
                                 placeholder="JohnDoe"
@@ -113,7 +113,13 @@ const Login = () => {
                             </span>
                         </div>
                         <div>
-                            <input type="checkbox" name="stayLogged" id="stayLogged" value={"true"} disabled={isRequesting} />
+                            <input
+                                type="checkbox"
+                                name="stayLogged"
+                                id="stayLogged"
+                                value={"true"}
+                                disabled={isRequesting} 
+                            />
                             <label htmlFor="stayLogged" className="login-text-small">
                 Se souvenir de moi
                             </label>

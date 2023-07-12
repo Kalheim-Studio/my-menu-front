@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 type AdminContextScheme = {
-  owner: {
+  user: {
     identifier: string;
     firstname: string;
     lastname: string;
@@ -19,7 +19,7 @@ type AdminContextScheme = {
 };
 
 const defaultAdminContextValues = {
-    owner: {
+    user: {
         identifier: "",
         firstname: "",
         lastname: "",
