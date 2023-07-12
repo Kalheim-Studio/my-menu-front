@@ -186,7 +186,7 @@ const Login = () => {
 
         if (root) {
             root.focus();
-            console.log(root.value);
+
             root.selectionStart = root.value.length;
             root.selectionEnd = root.value.length;
         }

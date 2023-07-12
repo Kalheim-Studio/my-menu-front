@@ -21,6 +21,10 @@ function useAuthenticated() {
                 setIsAuthenticated(true);
             })
             .catch(() => {
+                // Storages cleaning
+                localStorage.removeItem("auth");
+                sessionStorage.removeItem("auth");
+
                 // If requested page wasn't login navigate to /login
                 if (pathname !== "/login") navigate("/login");
                 // Else stay on /login

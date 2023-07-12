@@ -1,0 +1,41 @@
+import { createContext } from "react";
+
+type AdminContextScheme = {
+  owner: {
+    identifier: string;
+    firstname: string;
+    lastname: string;
+  };
+  restaurant: {
+    name: string;
+    siret: string;
+    address: string;
+    postalCode: string;
+    city: string;
+    phone: string;
+    email: string;
+    table: string[];
+  };
+};
+
+const defaultAdminContextValues = {
+    owner: {
+        identifier: "",
+        firstname: "",
+        lastname: "",
+    },
+    restaurant: {
+        name: "",
+        siret: "",
+        address: "",
+        postalCode: "",
+        city: "",
+        phone: "",
+        email: "",
+        table: [],
+    },
+};
+
+const AdminContext = createContext<AdminContextScheme>(defaultAdminContextValues);
+
+export { type AdminContextScheme, AdminContext };
