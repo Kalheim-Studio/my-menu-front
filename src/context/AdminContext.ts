@@ -5,6 +5,7 @@ type AdminContextScheme = {
     identifier: string;
     firstname: string;
     lastname: string;
+    role: string;
   };
   restaurant: {
     name: string;
@@ -23,6 +24,7 @@ const defaultAdminContextValues = {
         identifier: "",
         firstname: "",
         lastname: "",
+        role: "",
     },
     restaurant: {
         name: "",

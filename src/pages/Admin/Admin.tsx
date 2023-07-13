@@ -10,7 +10,7 @@ import { getAccountInfo } from "../../services";
 
 const links = [
     { title: "Carte & Menu", link: "/menu" },
-    { title: "Comptes employés", link: "/sub-accounts" },
+    { title: "Comptes employés", link: "/sub-accounts", ownerOnly: true },
     { title: "Liste tables", link: "/tables" },
     { title: "QR Code", link: "/qr-code" },
 ];
@@ -50,19 +50,22 @@ const Admin = () => {
                         </div>
                         <nav>
                             <ul className="nav-list">
-                                {links.map((navItem, index) => (
-                                    <li key={"link-" + index}>
-                                        <Link
-                                            to={"/admin" + navItem.link}
-                                            className={clsx(
-                                                "nav-item",
-                                                "/admin" + navItem.link === pathname && "nav-item-active"
-                                            )}
-                                        >
-                                            {navItem.title}
-                                        </Link>
-                                    </li>
-                                ))}
+                                {links.map(
+                                    (navItem, index) =>
+                                        !(adminContextValues.user.role === "Manager" && navItem.ownerOnly) && (
+                                            <li key={"link-" + index}>
+                                                <Link
+                                                    to={"/admin" + navItem.link}
+                                                    className={clsx(
+                                                        "nav-item",
+                                                        "/admin" + navItem.link === pathname && "nav-item-active"
+                                                    )}
+                                                >
+                                                    {navItem.title}
+                                                </Link>
+                                            </li>
+                                        )
+                                )}
                             </ul>
                         </nav>
                     </div>
