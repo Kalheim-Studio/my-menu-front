@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import { useAuthenticated } from "../../hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+
 import { logoSmall } from "../../assets/";
 import { AdminContext, AdminContextScheme } from "../../context";
 import { getAccountInfo } from "../../services";
@@ -22,6 +23,9 @@ const Admin = () => {
 
     // Path location
     const { pathname } = useLocation();
+
+    //Navigation
+    const navigate = useNavigate();
 
     // Check if authenticated
     const isAuthenticated = useAuthenticated();
@@ -67,6 +71,10 @@ const Admin = () => {
                                         )
                                 )}
                             </ul>
+                            <span className="unlog-container" role="button" onClick={unlogHandler}>
+                                <FontAwesomeIcon icon={faArrowRightFromBracket} flip="horizontal" size="2x" />
+                                <span>Déconnexion</span>
+                            </span>
                         </nav>
                     </div>
                     <div className="admin-page-container">
@@ -80,11 +88,19 @@ const Admin = () => {
                 </AdminContext.Provider>
             ) : (
                 <div className="waiting-spinner">
-                    <FontAwesomeIcon icon={faSpinner} spin size="2x" />
+                    <FontAwesomeIcon icon={faSpinner} spin size="lg" />
                 </div>
             )}
         </section>
     );
+
+    function unlogHandler() {
+    // Storages cleaning
+        localStorage.removeItem("auth");
+        sessionStorage.removeItem("auth");
+
+        navigate("/login");
+    }
 };
 
 export { Admin };

@@ -36,12 +36,14 @@
     }
     nav {
       flex: 8.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3em 0 2em 2em;
       background-color: $dark-grey;
       color: $second-color;
       .nav-list {
         height: 100%;
-        padding-top: 3em;
-        padding-left: 2em;
         li {
           margin-top: 1em;
           .nav-item {
@@ -52,6 +54,20 @@
             color: $second-color;
           }
         }
+      }
+      .unlog-container {
+        display: flex;
+        align-items: center;
+        transition: color 150ms;
+
+        span {
+          margin-left: 1em;
+        }
+      }
+      .unlog-container:hover {
+        cursor: pointer;
+        color: $light-grey;
+        transition: color 150ms;
       }
     }
   }
