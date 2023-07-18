@@ -27,7 +27,7 @@ const Login = () => {
     // Focus on password input with cursor at the end
         setInputCursorPosition(pwdRef);
     }, [showPwd]);
-
+    
     return (
         <div className="home-outlet login-container">
             <div className="home-header">

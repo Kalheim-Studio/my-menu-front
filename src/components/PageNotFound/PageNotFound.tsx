@@ -21,6 +21,7 @@ const PageNotFound = () => {
     );
 
     function onClickHandler() {
+        // Navigate to the previous page
         navigate(-1);
     }
 };
