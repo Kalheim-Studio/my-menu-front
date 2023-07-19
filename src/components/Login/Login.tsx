@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faSpinner, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticated } from "../../hooks";
 import { authenticate } from "../../services/authenticate/authenticate";
-import { LoginFormData } from "../../types/Login";
+import { LoginFormData } from "../../types";
 
 const Login = () => {
     //  States

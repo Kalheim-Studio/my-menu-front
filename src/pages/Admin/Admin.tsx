@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import { useAuthenticated } from "../../hooks";
@@ -6,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 import { logoSmall } from "../../assets/";
-import { AdminContext, AdminContextScheme } from "../../context";
 import { getAccountInfo } from "../../services";
+import { useEffect, useState } from "react";
 
 const links = [
     { title: "Carte & Menu", link: "/menu" },
@@ -16,10 +15,15 @@ const links = [
     { title: "QR Code", link: "/qr-code" },
 ];
 
+type HomeUserType = {
+    restaurantName: string;
+    firstname: string;
+    lastname: string;
+    role: string;
+};
+
 const Admin = () => {
-    // Context
-    const baseAdminContextValues = useContext<AdminContextScheme>(AdminContext);
-    const [adminContextValues, setAdminContextValues] = useState<AdminContextScheme>(baseAdminContextValues);
+    const [userInfo, setUserInfo] = useState<HomeUserType>();
 
     // Path location
     const { pathname } = useLocation();
@@ -35,20 +39,27 @@ const Admin = () => {
         const token = String(localStorage.getItem("auth") || sessionStorage.getItem("auth"));
 
         getAccountInfo(token)
-            .then((res) => setAdminContextValues(res))
+            .then((res) => {
+                setUserInfo({
+                    restaurantName: res.restaurant.name,
+                    firstname: res.user.firstname,
+                    lastname: res.user.lastname,
+                    role: res.user.role
+                });
+            })
             .catch((err) => console.log(err));
     }, []);
 
     return (
         <section id="adminPage">
             {isAuthenticated ? (
-                <AdminContext.Provider value={adminContextValues}>
+                <>
                     <div className="admin-left-panel">
                         <div className="panel-header">
                             <div className="header-content">
                                 <img alt="logo-mymenu-small" src={logoSmall} />
                                 <span>
-                                    {adminContextValues.user.firstname} {adminContextValues.user.lastname}
+                                    {userInfo?.firstname} {userInfo?.lastname}
                                 </span>
                             </div>
                         </div>
@@ -56,7 +67,7 @@ const Admin = () => {
                             <ul className="nav-list">
                                 {links.map(
                                     (navItem, index) =>
-                                        !(adminContextValues.user.role === "Manager" && navItem.ownerOnly) && (
+                                        !(userInfo?.role === "Manager" && navItem.ownerOnly) && (
                                             <li key={"link-" + index}>
                                                 <Link
                                                     to={"/admin" + navItem.link}
@@ -79,13 +90,14 @@ const Admin = () => {
                     </div>
                     <div className="admin-page-container">
                         <div className="page-title">
-                            <h2>{adminContextValues.restaurant.name}</h2>
+                            {/* <h2>{adminContextValues.restaurant.name}</h2> */}
+                            <h2>{userInfo?.restaurantName}</h2>
                         </div>
                         <div className="page-content">
                             <Outlet />
                         </div>
-                    </div>
-                </AdminContext.Provider>
+                    </div>  
+                </>
             ) : (
                 <div className="waiting-spinner">
                     <FontAwesomeIcon icon={faSpinner} spin size="lg" />

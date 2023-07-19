@@ -1,12 +1,12 @@
-import { AdminContextScheme } from "../../context";
+import { AccountInfo } from "../../types";
 
 /**
  *
  * @param {String} token : authentication token.
- * @returns {AdminContextScheme} : account info.
+ * @returns {AccountInfo} : account info.
  */
 const getAccountInfo = (token: string) => {
-    return new Promise<AdminContextScheme>((resolve, reject) => {
+    return new Promise<AccountInfo>((resolve, reject) => {
         if (!token) reject("Request error");
 
         const headers: HeadersInit = {
