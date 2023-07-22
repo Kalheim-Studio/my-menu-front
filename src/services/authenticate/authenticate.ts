@@ -1,4 +1,4 @@
-import { LoginFormData, AuthenticateResponse } from "../../types/Login";
+import { LoginFormData, AuthenticateResponse } from "../../types";
 
 function authenticate(body: Partial<LoginFormData>) {
     return new Promise<AuthenticateResponse>((resolve, reject) =>
