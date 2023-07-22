@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faSpinner, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticated } from "../../hooks";
 import { authenticate } from "../../services/authenticate/authenticate";
-import { LoginFormData } from "../../types/Login";
+import { LoginFormData } from "../../types";
 
 const Login = () => {
     //  States
@@ -27,7 +27,7 @@ const Login = () => {
     // Focus on password input with cursor at the end
         setInputCursorPosition(pwdRef);
     }, [showPwd]);
-
+    
     return (
         <div className="home-outlet login-container">
             <div className="home-header">
@@ -83,7 +83,7 @@ const Login = () => {
                                 type="text"
                                 id="loginIndentifierInput"
                                 className="form-input"
-                                name="indentifier"
+                                name="identifier"
                                 disabled={isRequesting}
                                 required
                                 placeholder="JohnDoe"
@@ -118,7 +118,7 @@ const Login = () => {
                                 name="stayLogged"
                                 id="stayLogged"
                                 value={"true"}
-                                disabled={isRequesting}
+                                disabled={isRequesting} 
                             />
                             <label htmlFor="stayLogged" className="login-text-small">
                 Se souvenir de moi
@@ -184,7 +184,7 @@ const Login = () => {
         if (stayLogged === "true") localStorage.setItem("auth", token);
         else sessionStorage.setItem("auth", token);
 
-        navigate("/admin");
+        navigate("/admin/menu");
     }
 
     function setInputCursorPosition(ref: React.RefObject<HTMLInputElement>) {
@@ -192,7 +192,7 @@ const Login = () => {
 
         if (root) {
             root.focus();
-            console.log(root.value);
+
             root.selectionStart = root.value.length;
             root.selectionEnd = root.value.length;
         }

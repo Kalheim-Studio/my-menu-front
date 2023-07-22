@@ -7,10 +7,11 @@ import {
     MenuAdmin,
     Register,
     ValidateAccount,
-    NotLogged,
+    ResetPassword,
     PageNotFound,
     Profile,
     SubAccounts,
+    Tables,
     QrCode,
 } from "../components";
 
@@ -22,13 +23,14 @@ const Router = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/validation" element={<ValidateAccount />} />
-                    <Route path="/not-logged" element={<NotLogged />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
                     <Route path="/*" element={<PageNotFound />} />
                 </Route>
                 <Route path="/admin" element={<Pages.Admin />}>
                     <Route path="/admin/profile" element={<Profile />} />
                     <Route path="/admin/menu" element={<MenuAdmin />} />
                     <Route path="/admin/sub-accounts" element={<SubAccounts />} />
+                    <Route path="/admin/tables" element={<Tables />} />
                     <Route path="/admin/qr-code" element={<QrCode />} />
                 </Route>
                 <Route path="/menu" element={<Pages.Menu />}>

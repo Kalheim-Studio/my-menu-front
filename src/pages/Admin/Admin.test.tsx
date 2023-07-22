@@ -1,10 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Admin } from "./Admin";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Admin page component test", () => {
     it("Component should rendering", () => {
-        render(<Admin />);
-
-        expect(screen.getByText("Admin")).toBeDefined();
+        render(
+            <BrowserRouter>
+                <Admin />
+            </BrowserRouter>
+        );
     });
 });

@@ -1,0 +1,96 @@
+#adminPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  .waiting-spinner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $second-color;
+  }
+  .admin-left-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    font-family: $title-font;
+    letter-spacing: 0.2em;
+    .panel-header {
+      flex: 1.6;
+      padding: 1em;
+      background-color: $second-color;
+      color: $dark-grey;
+      .header-content {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        img {
+          background-color: $light-grey;
+          border-radius: 100%;
+          height: 50px;
+          width: 50px;
+          margin-right: 1em;
+        }
+      }
+    }
+    nav {
+      flex: 8.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3em 0 2em 2em;
+      background-color: $dark-grey;
+      color: $second-color;
+      .nav-list {
+        height: 100%;
+        li {
+          margin-top: 1em;
+          .nav-item {
+            color: $light-grey;
+            text-decoration: none;
+          }
+          .nav-item-active {
+            color: $second-color;
+          }
+        }
+      }
+      .unlog-container {
+        display: flex;
+        align-items: center;
+        transition: color 150ms;
+
+        span {
+          margin-left: 1em;
+        }
+      }
+      .unlog-container:hover {
+        cursor: pointer;
+        color: $light-grey;
+        transition: color 150ms;
+      }
+    }
+  }
+  .admin-page-container {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/pictures/background_admin.svg");
+    .page-title {
+      flex: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      font-family: $title-font;
+      letter-spacing: 0.25em;
+      color: $second-color;
+    }
+    .page-content {
+      flex: 8.4;
+      width: 70%;
+      align-self: center;
+      background-color: $light-grey;
+    }
+  }
+}

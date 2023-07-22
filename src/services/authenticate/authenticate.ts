@@ -1,7 +1,6 @@
-import { LoginFormData, AuthenticateResponse } from "../../types/Login";
+import { LoginFormData, AuthenticateResponse } from "../../types";
 
-async function authenticate(body: Partial<LoginFormData>) {
-    
+function authenticate(body: Partial<LoginFormData>) {
     return new Promise<AuthenticateResponse>((resolve, reject) =>
         fetch(`${import.meta.env.VITE_API_URL}/user/authenticate`, {
             method: "POST",
@@ -19,13 +18,13 @@ async function authenticate(body: Partial<LoginFormData>) {
                 return res.json();
             })
             .then((json) => {
-                resolve({result: json.token, stayLogged: body.stayLogged});
+                resolve({ result: json.token, stayLogged: body.stayLogged });
             })
             .catch((err) => {
                 console.log(err.message);
-                reject({result: "Email, ou mot de passe incorrect, ou compte non authorisé."});
+                reject({ result: "Email, ou mot de passe incorrect, ou compte non authorisé." });
             })
     );
 }
 
-export { authenticate} ;
+export { authenticate };

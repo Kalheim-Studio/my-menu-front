@@ -13,7 +13,7 @@ const Home = () => {
     }, [location.pathname, navigate]);
 
     return (
-        <div id="homePage">
+        <section id="homePage">
             <div className="home-card">
                 <div className="card-left">
                     <div className="card-left-header">
@@ -26,7 +26,7 @@ const Home = () => {
                     <Outlet />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
