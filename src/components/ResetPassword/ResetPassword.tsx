@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-const Register = () => {
+const ResetPassword = () => {
     return (
         <div>
-            <p>Register</p>
+            <p>Reset Password</p>
             <Link to="/">Retour</Link>
         </div>
     );
 };
 
-export { Register };
+export { ResetPassword };

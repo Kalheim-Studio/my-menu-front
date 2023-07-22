@@ -7,7 +7,7 @@ import {
     MenuAdmin,
     Register,
     ValidateAccount,
-    NotLogged,
+    ResetPassword,
     PageNotFound,
     Profile,
     SubAccounts,
@@ -23,7 +23,7 @@ const Router = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/validation" element={<ValidateAccount />} />
-                    <Route path="/not-logged" element={<NotLogged />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
                     <Route path="/*" element={<PageNotFound />} />
                 </Route>
                 <Route path="/admin" element={<Pages.Admin />}>

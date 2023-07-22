@@ -1,15 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import { Register } from "./Register";
+import { ResetPassword } from "./ResetPassword";
 import { BrowserRouter } from "react-router-dom";
 
-describe("Register component test", () => {
+describe("ResetPassword component test", () => {
     it("Component should rendering", () => {
         render(
             <BrowserRouter>
-                <Register />
+                <ResetPassword />
             </BrowserRouter>
         );
 
-        expect(screen.getByText("Register")).toBeDefined();
+        expect(screen.getByText("Reset Password")).toBeDefined();
     });
 });

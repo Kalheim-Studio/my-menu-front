@@ -1,6 +1,7 @@
 export * from "./Login/Login";
 export * from "./MenuAdmin/MenuAdmin";
 export * from "./Register/Register";
+export * from "./ResetPassword/ResetPassword";
 export * from "./ValidateAccount/ValidateAccount";
 export * from "./NotLogged/NotLogged";
 export * from "./PageNotFound/PageNotFound";
