@@ -12,8 +12,11 @@ function useAuthenticated() {
     useEffect(() => {
         const token = localStorage.getItem("auth") || sessionStorage.getItem("auth");
 
-        if(!token)
+        if(!token){
+            // If requested page wasn't login navigate to /login
+            if (pathname !== "/login") navigate("/login");
             return;
+        }
 
         checkAuthentication(token)
             .then(() => {
