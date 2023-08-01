@@ -55,7 +55,7 @@ const Login = () => {
                                 type="radio"
                                 id="ownerRadioInput"
                                 name="role"
-                                value="owner"
+                                value="Owner"
                                 defaultChecked
                                 disabled={isRequesting}
                                 onChange={radioChangeHandler}
@@ -67,7 +67,7 @@ const Login = () => {
                                 type="radio"
                                 id="managerRadioInput"
                                 name="role"
-                                value="manager"
+                                value="Manager"
                                 disabled={isRequesting}
                                 onChange={radioChangeHandler}
                             />
@@ -148,7 +148,7 @@ const Login = () => {
 
     // Handlers
     function radioChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        if (e.target.value === "manager") setIsManager(true);
+        if (e.target.value === "Manager") setIsManager(true);
         else setIsManager(false);
     }
 
