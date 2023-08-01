@@ -12,6 +12,9 @@ function useAuthenticated() {
     useEffect(() => {
         const token = localStorage.getItem("auth") || sessionStorage.getItem("auth");
 
+        if(!token)
+            return;
+
         checkAuthentication(token)
             .then(() => {
                 // If requested page was /login redirect to admin page

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 // Pages
 import * as Pages from "../pages";
 // Components
@@ -16,6 +16,13 @@ import {
 } from "../components";
 
 const Router = () => {
+    // Get location
+    const { pathname } = useLocation();
+    
+    // Page title
+    const page = pathname.split("/");
+    document.title = "MyMenu - " + page[page.length-1].replace("-", " ");
+
     return (
         <>
             <Routes>
