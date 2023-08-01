@@ -54,11 +54,11 @@ describe("Login component test", () => {
         expect(radios.length).toBe(2);
         
         // owner
-        expect(radios[0].getAttribute("value")).toBe("owner");
+        expect(radios[0].getAttribute("value")).toBe("Owner");
         expect(radios[0].getAttribute("name")).toBe("role");
         expect(screen.getByText("Gérant")).toBeDefined();
         // manager
-        expect(radios[1].getAttribute("value")).toBe("manager");
+        expect(radios[1].getAttribute("value")).toBe("Manager");
         expect(radios[1].getAttribute("name")).toBe("role");
         expect(screen.getByText("Manager")).toBeDefined();
 
@@ -135,7 +135,7 @@ describe("Login component test", () => {
 
         await userEvent.click(enterButton);
 
-        expect(authenticate).toHaveBeenCalledWith({email: "john.doe@mail.com",role: "owner", password: "password"});
+        expect(authenticate).toHaveBeenCalledWith({email: "john.doe@mail.com",role: "Owner", password: "password"});
         expect(localSetItemSpy).toHaveBeenCalledWith("auth", "thisIsAToken");
     });
 });
